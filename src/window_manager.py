@@ -29,9 +29,7 @@ class MainWindow:
     """
     Manages the main application window for a file encryption and decryption utility.
 
-    This class is responsible for setting up the graphical user interface (GUI) for
-    the encryption and decryption application. It provides features to select a file,
-    encrypt or decrypt the file using AES encryption with a user-provided key.
+    This class is responsible for setting up the graphical user interface (GUI) for the encryption and decryption application. It provides features to select a file, encrypt or decrypt the file using AES encryption with a user-provided key.
     """
 
     def __init__(self, app_window: tk.Tk):
@@ -131,9 +129,7 @@ class MainWindow:
 
     def on_button_clicked(self):
         """
-        Handles the event when a button is clicked to select a file. The function opens a
-        dialog to select a file, updates the selected file's path to the label and enables
-        encrypt and decrypt buttons.
+        Handles the event when a button is clicked to select a file. The function opens a dialog to select a file, updates the selected file's path to the label and enables encrypt and decrypt buttons.
 
         Raises:
             None
@@ -150,10 +146,7 @@ class MainWindow:
 
     def on_encrypt_clicked(self):
         """
-        Handles the encryption operation when the button 'encrypt' is clicked. It encrypts
-        the contents of a selected file using AES encryption with a randomly generated
-        IV (Initialization Vector) in CFB mode and writes the encrypted data to a new
-        file with a `.enc` extension.
+        Handles the encryption operation when the button 'encrypt' is clicked. It encrypts the contents of a selected file using AES encryption with a randomly generated IV (Initialization Vector) in CFB mode and writes the encrypted data to a new file with a `.enc` extension.
 
         Raises:
             None
@@ -178,9 +171,7 @@ class MainWindow:
 
     def on_decrypt_clicked(self):
         """
-        Handles the decryption of an encrypted file when the decrypt button is clicked.
-        It verifies that the selected file has the correct extension, retrieves the encryption
-        key, decrypts the file content and saves the decrypted file with its original name.
+        Handles the decryption of an encrypted file when the decrypt button is clicked. It verifies that the selected file has the correct extension, retrieves the encryption key, decrypts the file content and saves the decrypted file with its original name.
 
         Raises:
             None
@@ -208,12 +199,10 @@ class MainWindow:
 
     def get_key(self):
         """
-        Prompts the user to enter a secret key via a dialog box, verifies its presence
-        and generates a cryptographic key using PBKDF2 with a static salt.
+        Prompts the user to enter a secret key via a dialog box, verifies its presence and generates a cryptographic key using PBKDF2 with a static salt.
 
         Returns:
-            bytes | None: A 32-byte cryptographic key derived from the input secret key
-            using PBKDF2. Returns None if the user does not provide a secret key.
+            bytes | None: A 32-byte cryptographic key derived from the input secret key using PBKDF2. Returns None if the user does not provide a secret key.
 
         Raises:
             Warning: Displays a warning dialog if the user does not input a secret key.
@@ -230,9 +219,7 @@ class MainWindow:
         """
         Destroys the main application window.
 
-        This method is used to terminate the application by closing the primary
-        window. It leverages the `destroy` method of the `tkinter` library to
-        shut down the interface and safely exit the program.
+        This method is used to terminate the application by closing the primary window. It leverages the `destroy` method of the `tkinter` library to shut down the interface and safely exit the program.
 
         Raises:
             None
@@ -243,10 +230,7 @@ class MainWindow:
         """
         Executes the main event loop for the graphical user interface (GUI).
 
-        This method is responsible for starting the tkinter event loop, which
-        continually listens for and processes user input such as mouse clicks
-        or keypresses within the application window. The loop runs until the
-        application window is closed.
+        This method is responsible for starting the tkinter event loop, which continually listens for and processes user input such as mouse clicks or keypresses within the application window. The loop runs until the application window is closed.
 
         Returns:
             None
