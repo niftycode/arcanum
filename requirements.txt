@@ -1,0 +1,10 @@
+setuptools
+wheel
+build
+flake8
+black
+mypy
+pytest
+pytest-cov
+platformdirs
+pycryptodome
