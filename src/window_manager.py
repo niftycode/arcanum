@@ -19,6 +19,7 @@ from Crypto.Random import get_random_bytes
 from Crypto.Protocol.KDF import PBKDF2
 
 from src import error_window
+from src import about_window
 
 fileConfig("logging.ini")
 logger = logging.getLogger()
@@ -113,6 +114,14 @@ class MainWindow:
             self.button_frame_two, text="Quit", command=self.quit_program
         )
         self.quit_button.grid(row=0, column=0, sticky="sw", padx=10, pady=80)
+
+        # Add a button to show the about window
+        self.about_button = ttk.Button(
+            self.button_frame_two,
+            text="About",
+            command=lambda: about_window.show_custom_about(),
+        )
+        self.about_button.grid(row=0, column=1, sticky="w")
 
         # Add weight to the grid layout
         self.input_frame.grid_columnconfigure(0, weight=1)
