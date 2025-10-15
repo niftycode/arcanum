@@ -8,20 +8,27 @@ Arcanum is a desktop application that allows users to easily encrypt and decrypt
 
 ## Features
 
-- **AES Encryption**: Uses industry-standard AES encryption in CFB (Cipher Feedback) mode
+- **AES Encryption**: Uses AES encryption in CFB (Cipher Feedback) mode
 - **Password-Based Key Derivation**: Implements PBKDF2 for secure key generation from user passwords
 - **User-Friendly GUI**: Simple Tkinter-based interface for easy file selection and operations
-- **File Type Support**: Works with any file type (text files, documents, images, etc.)
+- **File Type Support**: Works with text files
 - **Compatible with macOS**
 
 ## Requirements
 
-- Python 3.12 or higher
-- Dependencies (automatically installed via pip or pip3):
+- Python 3.13 or higher
+- Dependencies (automatically installed via `pip` or `pip3`):
   - pycryptodome
+
+Dependencies can be installed using
+
+```Bash
+pip3 install -r requirements.txt
+```
 
 ## Installation
 
 1. Clone the repository
-2. Use pip3 to install the dependencies
+2. Create a virtual environment
+2. Use `pip3` to install the dependencies
 3. Run the main.py file
