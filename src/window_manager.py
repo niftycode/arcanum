@@ -83,13 +83,13 @@ class MainWindow:
         )
         self.file_label.grid(row=1, column=0, sticky="w", padx=10)
 
-        # Create buttons frame
-        self.button_frame = ttk.Frame(self.window, padding=(10, 10, 10, 10))
-        self.button_frame.grid(row=1, column=0, sticky="nsew")
+        # Create first button frame
+        self.button_frame_one = ttk.Frame(self.window, padding=(10, 10, 10, 10))
+        self.button_frame_one.grid(row=1, column=0, sticky="nsew")
 
         # Add buttons for encryption and decryption
         self.encrypt_button = ttk.Button(
-            self.button_frame,
+            self.button_frame_one,
             text="Encrypt",
             command=self.on_encrypt_clicked,
             state=tk.DISABLED,
@@ -97,24 +97,28 @@ class MainWindow:
         self.encrypt_button.grid(row=0, column=0, sticky="w", padx=10, pady=10)
 
         self.decrypt_button = ttk.Button(
-            self.button_frame,
+            self.button_frame_one,
             text="Decrypt",
             command=self.on_decrypt_clicked,
             state=tk.DISABLED,
         )
         self.decrypt_button.grid(row=0, column=1, sticky="w", padx=10, pady=10)
 
+        # Create second button frame
+        self.button_frame_two = ttk.Frame(self.window, padding=(10, 10, 10, 10))
+        self.button_frame_two.grid(row=2, column=0, sticky="sw")
+
         # Add a button to quit the application
         self.quit_button = ttk.Button(
-            self.button_frame, text="Quit", command=self.quit_program
+            self.button_frame_two, text="Quit", command=self.quit_program
         )
-        self.quit_button.grid(row=1, column=0, sticky="e", padx=10, pady=10)
+        self.quit_button.grid(row=0, column=0, sticky="sw", padx=10, pady=80)
 
         # Add weight to the grid layout
-        # self.window.grid_rowconfigure(0, weight=1)
-        self.window.grid_columnconfigure(0, weight=1)
-        self.input_frame.grid_columnconfigure(1, weight=1)
-        self.button_frame.grid_columnconfigure(1, weight=1)
+        self.input_frame.grid_columnconfigure(0, weight=1)
+        self.button_frame_one.grid_rowconfigure(0, weight=1)
+        self.button_frame_one.grid_columnconfigure(1, weight=1)
+        self.button_frame_two.grid_columnconfigure(0, weight=1)
 
     def on_button_clicked(self):
         """
