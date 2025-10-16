@@ -10,7 +10,10 @@ Date modified: -
 from tkinter import messagebox, simpledialog
 
 
-def get_password() -> str:
+from typing import Optional
+
+
+def get_password() -> Optional[str]:
     """
     Prompts the user to input a secret key securely.
 
