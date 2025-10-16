@@ -82,7 +82,7 @@ class MainWindow:
         )
         self.file_label.grid(row=1, column=0, sticky="w", padx=10)
 
-        # Create first button frame
+        # Create a first button frame
         self.button_frame_one = ttk.Frame(self.window, padding=(10, 10, 10, 10))
         self.button_frame_one.grid(row=1, column=0, sticky="nsew")
 
@@ -103,7 +103,7 @@ class MainWindow:
         )
         self.decrypt_button.grid(row=0, column=1, sticky="w", padx=10, pady=10)
 
-        # Create second button frame
+        # Create a second button frame
         self.button_frame_two = ttk.Frame(self.window, padding=(10, 10, 10, 10))
         self.button_frame_two.grid(row=2, column=0, sticky="sw")
 

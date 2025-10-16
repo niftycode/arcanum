@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=70.0"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -24,7 +24,15 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython"
 ]
 
-dependencies = []
+dependencies = [
+    "flake8",
+    "black",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "platformdirs",
+    "pycryptodome"
+]
 
 [project.scripts]
 arcanum = "src.main:main"
