@@ -11,15 +11,16 @@ import logging
 from logging.config import fileConfig
 
 import tkinter as tk
-from tkinter import messagebox, filedialog, simpledialog
+from tkinter import filedialog
 from tkinter import ttk
 
 from Crypto.Cipher import AES
-from Crypto.Random import get_random_bytes
 from Crypto.Protocol.KDF import PBKDF2
+from Crypto.Random import get_random_bytes
 
 from src import error_window
 from src import about_window
+from src import input_password
 
 fileConfig("logging.ini")
 logger = logging.getLogger()
@@ -152,19 +153,23 @@ class MainWindow:
             None
         """
         if self.selected_file:
-            key = self.get_key()
-            if key is None:
+            password = input_password.get_password()
+            if password is None:
                 return
 
             with open(self.selected_file, "rb") as f:
                 data = f.read()
 
+            salt = get_random_bytes(16)
             iv = get_random_bytes(16)
+            key = PBKDF2(password, salt, dkLen=32)
+
             cipher = AES.new(key, AES.MODE_CFB, iv=iv)
-            encrypted_data = iv + cipher.encrypt(data)
+            encrypted_data = salt + iv + cipher.encrypt(data)
 
             # Append `.enc` so you can identify encrypted files
             enc_file_path = self.selected_file + ".enc"
+
             with open(enc_file_path, "wb") as f:
                 f.write(encrypted_data)
             self.file_label.config(text=f"File encrypted: {enc_file_path}")
@@ -177,16 +182,20 @@ class MainWindow:
             None
         """
         if self.selected_file and self.selected_file.endswith(".enc"):
-            key = self.get_key()
-            if key is None:
+            password = input_password.get_password()
+            if password is None:
                 return
 
             with open(self.selected_file, "rb") as f:
                 encrypted_data = f.read()
 
-            iv = encrypted_data[:16]
-            cipher = AES.new(key, AES.MODE_CFB, iv=iv)
-            decrypted_data = cipher.decrypt(encrypted_data[16:])
+            retrieved_salt = encrypted_data[:16]
+            retrieved_iv = encrypted_data[16:32]
+            retrieved_ciphertext = encrypted_data[32:]
+
+            key = PBKDF2(password, retrieved_salt, dkLen=32)
+            cipher = AES.new(key, AES.MODE_CFB, iv=retrieved_iv)
+            decrypted_data = cipher.decrypt(retrieved_ciphertext)
 
             # Remove the `.enc` extension to get the original filename
             dec_file_path = self.selected_file.rsplit(".enc", 1)[0]
@@ -196,24 +205,6 @@ class MainWindow:
 
         else:
             error_window.show_error("Not an encrypted file.")
-
-    def get_key(self):
-        """
-        Prompts the user to enter a secret key via a dialog box, verifies its presence and generates a cryptographic key using PBKDF2 with a static salt.
-
-        Returns:
-            bytes | None: A 32-byte cryptographic key derived from the input secret key using PBKDF2. Returns None if the user does not provide a secret key.
-
-        Raises:
-            Warning: Displays a warning dialog if the user does not input a secret key.
-        """
-        password = simpledialog.askstring("Input", "Enter secret key:", show="*")
-        if not password:
-            messagebox.showwarning("Warning", "Missing Secret Key")
-            return None
-
-        salt = b"StaticSalt"
-        return PBKDF2(password, salt, dkLen=32)
 
     def quit_program(self):
         """
