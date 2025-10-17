@@ -8,15 +8,10 @@ Date created: October 10th, 2025
 Date modified: October 15th, 2025
 """
 
-import logging
+
 import tkinter as tk
 
-from logging.config import fileConfig
-
 from src import window_manager
-
-fileConfig("logging.ini")
-logger = logging.getLogger()
 
 
 def main():

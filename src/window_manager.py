@@ -7,9 +7,6 @@ Date created: October 10th, 2025
 Date modified: -
 """
 
-import logging
-from logging.config import fileConfig
-
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import ttk
@@ -21,9 +18,6 @@ from Crypto.Random import get_random_bytes
 from src import error_window
 from src import about_window
 from src import input_password
-
-fileConfig("logging.ini")
-logger = logging.getLogger()
 
 
 class MainWindow:
