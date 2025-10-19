@@ -12,6 +12,7 @@
 dist/
 build/
 wheels/
+release/
 *.egg-info/
 __pycache__/
 
