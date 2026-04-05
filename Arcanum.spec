@@ -60,7 +60,8 @@ app = BUNDLE(
             }
         ],
         'CFBundleIdentifier': 'de.nicefield.Arcanum',
-        'CFBundleShortVersionString': '0.1.0',
-        'CFBundleGetInfoString': 'Bodo Schönfeld © 2025'
+        'CFBundleShortVersionString': '0.1.1',
+        'CFBundleVersion': '0.1.1',
+        'CFBundleGetInfoString': 'Bodo Schönfeld © 2025-2026'
     },
 )

@@ -24,7 +24,7 @@ class MainWindow:
     """
     Manages the main application window for a file encryption and decryption utility.
 
-    This class is responsible for setting up the graphical user interface (GUI) for the encryption and decryption application. It provides features to select a file, encrypt or decrypt the file using AES encryption with a user-provided key.
+    This class is responsible for setting up the graphical user interface (GUI) for the encryption and decryption application. It provides features to select a file, encrypt, or decrypt the file using AES encryption with a user-provided key.
     """
 
     def __init__(self, app_window: tk.Tk):
@@ -37,7 +37,7 @@ class MainWindow:
         menu_bar = tk.Menu(self.window)
         self.window.config(menu=menu_bar)
 
-        # Add "File" with "Quit" button to menu bar.
+        # Add "File" with the "Quit" button to the menu bar.
         file_menu = tk.Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="File", menu=file_menu)
         file_menu.add_command(label="Quit", command=self.window.quit)
@@ -124,13 +124,13 @@ class MainWindow:
 
     def on_button_clicked(self):
         """
-        Handles the event when a button is clicked to select a file. The function opens a dialog to select a file, updates the selected file's path to the label and enables encrypt and decrypt buttons.
+        Handles the event when a button is clicked to select a file. The function opens a dialog to select a file, updates the selected file's path to the label, and enables the buttons.
 
         Raises:
             None
         """
         file_path = filedialog.askopenfilename(
-            filetypes=[("Text files", "*.txt"), ("Encrypted files", "*.enc")]
+            filetypes=[("Text files", "*.txt", "*.md"), ("Encrypted files", "*.enc")]
         )
         if file_path:
             self.selected_file = file_path
@@ -170,7 +170,7 @@ class MainWindow:
 
     def on_decrypt_clicked(self):
         """
-        Handles the decryption of an encrypted file when the decrypt button is clicked. It verifies that the selected file has the correct extension, retrieves the encryption key, decrypts the file content and saves the decrypted file with its original name.
+        Handles the decryption of an encrypted file when the decrypt button is clicked. It verifies that the selected file has the correct extension, retrieves the encryption key, decrypts the file content, and saves the decrypted file with its original name.
 
         Raises:
             None

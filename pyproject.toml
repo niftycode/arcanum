@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "arcanum"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple and secure file encryption and decryption utility."
 readme = "README.md"
 requires-python = ">=3.13"
