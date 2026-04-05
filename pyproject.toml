@@ -31,7 +31,8 @@ dependencies = [
     "pytest",
     "pytest-cov",
     "platformdirs",
-    "pycryptodome"
+    "pycryptodome",
+    "pyinstaller"
 ]
 
 [project.scripts]
