@@ -1,5 +1,11 @@
 # arcanum
 
+![Static Badge](https://img.shields.io/badge/python-%3E%3D3.12-blue)
+![GitHub License](https://img.shields.io/github/license/niftycode/arcanum)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/niftycode/arcanum)
+![GitHub last commit](https://img.shields.io/github/last-commit/niftycode/arcanum)
+
 A simple and secure file encryption and decryption utility with a graphical user interface built using Python and Tkinter.
 
 ## Overview
